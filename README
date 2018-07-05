@@ -1,0 +1,34 @@
+Name: Wenling Yang
+EE450 Fall 2016 Socket Programming Project
+Completed Phase I, II, III, using the "fork" implementation
+Amazon AWS, three backservers(A,B,C), client
+
+
+files list:
+makefile --- compile all the source code
+aws.cpp  --- AWS: create TCP, UDP connections, sending and receiving data both in TCP, UDP 
+serverA.cpp --- Back server A UDP connection for communication
+serverA.cpp --- Back server B UDP connection for communication
+serverA.cpp --- Back server C UDP connection for communication
+client.cpp  --- Client TCP client connection for communication
+
+
+How to run:
+gmake 
+./aws.o
+./serverA.o
+./serverB.o
+./serverC.o
+./client.o <function_name>
+
+where <function_name> can take a value from{min, max, sum, sos}, all these elements shoud be lowercase.
+
+Format of all messages: 
+a)Message from Client to AWS is in 1 packet, which includes the function name, all integers from num.csv that cast into a signed long int vector and the totol numbers of these integers.
+b)Message from AWS to Backend Server A is also in 1 packet, which includes the function name, the first 1/3 of all integers cast into a signed long int vector.
+c)Message from AWS to Backend Server B is also in 1 packet, which includes the function name, the second 1/3 of all integers cast into a signed long int vector.
+d)Message from AWS to Backend Server A is also in 1 packet, which includes the function name, the last 1/3 of all integers cast into a signed long int vector.
+e)Message from Backend Server (A, B, or C) to AWS is an integer of calculation result.
+f)Message from AWS to Client is also an integer of final calculation result. 
+
+
